@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Admin Login — Barima Nkwan</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Admin Login</h1>
+      <form id="login-form">
+        <div class="form-row">
+          <label for="user">User</label><input id="user" required />
+        </div>
+        <div class="form-row">
+          <label for="pass">Password</label
+          ><input id="pass" type="password" required />
+        </div>
+        <div class="form-row">
+          <button class="primary" type="submit">Sign in</button>
+        </div>
+      </form>
+      <p class="small">
+        Default credentials are ADMIN_USER=admin, ADMIN_PASS=password (set env
+        vars to secure).
+      </p>
+    </div>
+    <script>
+      document
+        .getElementById("login-form")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const user = document.getElementById("user").value.trim();
+          const pass = document.getElementById("pass").value.trim();
+          const res = await fetch("/admin/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ user, pass }),
+          });
+          if (res.ok) {
+            window.location = "/admin";
+          } else {
+            alert("Login failed");
+          }
+        });
+    </script>
+  </body>
+</html>

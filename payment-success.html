@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Payment Success</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Payment Successful</h1>
+      <p>Thank you — your payment was received and your order is being prepared.</p>
+      <p id="info">Looking up your order...</p>
+      <p><a id="link-home" href="/">Return to menu</a></p>
+    </div>
+    <script>
+      (async function(){
+        const params = new URLSearchParams(window.location.search);
+        const order = params.get('order');
+        const infoEl = document.getElementById('info');
+        const link = document.getElementById('link-home');
+        if(!order){ infoEl.textContent = 'No order id provided.'; return; }
+        try{
+          const resp = await fetch('/api/orders/' + encodeURIComponent(order));
+          if(!resp.ok) { infoEl.textContent = 'Order not found.'; return; }
+          const data = await resp.json();
+          infoEl.innerHTML = `Order <strong>${data.id}</strong> received — status: <em>${['Received','Preparing','Out for delivery','Delivered'][data.statusIndex]||'Unknown'}</em>`;
+          // auto-redirect to main page with track param so user can see live tracking
+          link.href = '/?track=' + encodeURIComponent(order);
+          setTimeout(()=>{ window.location = link.href; }, 1800);
+        }catch(err){ infoEl.textContent = 'Error fetching order.'; }
+      })();
+    </script>
+  </body>
+</html>

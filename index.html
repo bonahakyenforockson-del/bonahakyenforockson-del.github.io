@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Barima Nkwan — Order Online</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-sA+4w6kGv7JQv7r3yYk7m6Z6bQ+1b3s2m0m6v9Z1k0M="
+      crossorigin=""
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <h1>Barima Nkwan Inn</h1>
+        <p class="tag">Good food • Great vibes • Fast delivery</p>
+        <div class="actions">
+          <button id="view-cart">Cart (<span id="cart-count">0</span>)</button>
+          <button id="view-track">Track Order</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container main-grid">
+      <section class="menu">
+        <h2>Menu</h2>
+        <div id="menu-list" class="menu-list">
+          <!-- Items injected by JS -->
+        </div>
+      </section>
+
+      <aside class="cart" id="cart">
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <div class="cart-summary">
+          <div>Total: GHC <span id="cart-total">0.00</span></div>
+          <button id="checkout-btn" class="primary">Checkout</button>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Tracking / Checkout Modal -->
+    <div class="modal" id="modal" aria-hidden="true">
+      <div class="modal-content">
+        <button class="close" id="modal-close">×</button>
+        <div id="modal-body"></div>
+        <!-- Map container (shown when tracking) -->
+        <div
+          id="track-map"
+          style="
+            display: none;
+            height: 300px;
+            margin-top: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+          "
+        ></div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container">© Barima Nkwan — Order & Enjoy</div>
+    </footer>
+
+    <script src="script.js"></script>
+    <!-- Leaflet JS -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-o9N1j8nYk0vY6VJc7p2Vf3Yk6V9m1b3s2m0m6v9Z1k0M="
+      crossorigin=""
+    ></script>
+  </body>
+</html>

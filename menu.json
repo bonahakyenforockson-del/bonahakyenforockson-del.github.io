@@ -1,0 +1,8 @@
+[
+  {"id": "f1", "name": "Jollof Rice + Chicken", "desc": "Spicy jollof rice with fried chicken", "price": 25.00, "category": "Food"},
+  {"id": "f2", "name": "Banku & Tilapia", "desc": "Traditional banku served with tilapia", "price": 35.00, "category": "Food"},
+  {"id": "f3", "name": "Kelewele", "desc": "Spicy fried plantain", "price": 12.00, "category": "Snack"},
+  {"id": "d1", "name": "Fresh Ginger Drink", "desc": "Homemade ginger", "price": 8.00, "category": "Drink"},
+  {"id": "d2", "name": "Fanta", "desc": "Refreshingly chilled", "price": 7.00, "category": "Drink"},
+  {"id": "d3", "name": "Bottled Water", "desc": "500ml", "price": 3.00, "category": "Drink"}
+]
